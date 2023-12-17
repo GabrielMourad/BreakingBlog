@@ -14,7 +14,7 @@ export default function RegisterPage() {
     event.preventDefault();
 
     // Send a POST request to the server with the registration credentials
-    const response = await fetch('http://localhost:3000/register', {
+    const response = await fetch('breaking-blog-server-gabriel-mourads-projects.vercel.app/register', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },

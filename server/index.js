@@ -22,6 +22,9 @@ mongoose.connect(process.env.MONGO_LINK)
 server.use(cors())
 server.use(express.json())
 
+server.get('/', async (request,response) => {
+    response.json({message: "hello world"})
+})
 // Route for user registration
 server.post('/register', async (request,response) => {
     const { username, password } = request.body
@@ -92,3 +95,6 @@ server.get('/post/:id', async (request, response) => {
     response.json(postDoc)
 })
 
+// Start the server and listen on port 3000
+console.log('Server listening on port 3000')
+server.listen(3000)

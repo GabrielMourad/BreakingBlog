@@ -7,13 +7,13 @@ const Post = require('./db_model/Post')
 const server = express();
 const multer = require('multer')
 require("dotenv").config()
-const postMiddleware = multer({ dest: 'images/' })
+const postMiddleware = multer({ dest: '/tmp/' })
 const fs = require('fs')
 
 //breaking-blog-server-gabriel-mourads-projects.vercel.app
 
 // Serve images statically
-server.use('/images', express.static(__dirname + '/images'))
+server.use('/images', express.static(__dirname + '/tmp'))
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_LINK)
@@ -23,7 +23,7 @@ server.use(cors())
 server.use(express.json())
 
 server.get('/', async (request,response) => {
-    response.json({message: "hello world"})
+    response.json({message: "hello"})
 })
 // Route for user registration
 server.post('/register', async (request,response) => {
@@ -68,7 +68,7 @@ server.post('/post', postMiddleware.single('file'), async (request,response) => 
     const nameArr = originalname.split('.')
     const fileExt = nameArr[nameArr.length - 1]
     const pathWithExt = `${path}.${fileExt}`
-    fs.renameSync(path, pathWithExt)
+    fs.renameSync(path, pathWithExt);
 
     // Create a new post in the database
     const postDoc = await Post.create({

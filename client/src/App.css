@@ -1,0 +1,201 @@
+/* Apply box-sizing globally for better layout calculations */
+* {
+  box-sizing: border-box;
+}
+
+/* Set base styles for the body */
+body {
+  color: #143b05;
+  font-family: 'Average', serif;
+  background-color: rgb(226, 226, 223);
+}
+
+/* Main content styling */
+main {
+  padding: 10px;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* Responsive image styling */
+img {
+  max-width: 100%;
+}
+
+/* Header styles */
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 90px;
+  margin-top: 20px;
+}
+
+/* Header link styles */
+header a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 18px;
+}
+
+/* Header link hover styles */
+header a:hover {
+  color: rgb(124, 123, 123);
+  text-decoration: underline;
+}
+
+/* Header logo styles */
+header a.logo {
+  font-weight: bold;
+  font-size: 45px;
+  margin-bottom: 25px;
+}
+
+/* Header navigation styles */
+header nav {
+  display: flex;
+  gap: 20px;
+}
+
+/* Post container styles */
+div.post {
+  display: grid;
+  grid-template-columns: 0.8fr 1.1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: rgb(247, 247, 247);
+  border-radius: 3%;
+}
+
+/* Post content styles */
+div.post div.content h2 {
+  margin: 0;
+  font-size: 1.9rem;
+  color: #284d0f;
+}
+
+/* Post content link styles */
+div.post div.content a {
+  text-decoration: none;
+}
+
+/* Post info styles */
+div.post p.info {
+  margin: 6px 0;
+  color: #8a7d7d;
+  font-size: 0.7rem;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+}
+
+/* Post author link styles */
+div.post p.info a.author {
+  color: #333;
+}
+
+/* Post summary styles */
+div.post p.summary {
+  margin: 10px 0;
+}
+
+/* Form styles for login and register */
+.loginForm, .registerForm {
+  max-width: 800px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 100px 60px;
+}
+
+/* Input field styles */
+input {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  background-color: #eeee;
+  border-radius: 5px;
+}
+
+/* Button styles for registration and login */
+.registerBtn button,
+.loginBtn button {
+  width: 50%;
+  display: block;
+  background-color: #082c0a;
+  border: 0;
+  color: #fff;
+  border-radius: 5px;
+  padding: 9px 0;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+/* Button hover styles */
+.registerBtn button,
+.loginBtn button:hover {
+  background-color: rgb(9, 77, 9);
+}
+
+/* Form header styles */
+form h1 {
+  text-align: center;
+}
+
+/* Create button styles */
+.createBtn {
+  width: 30%;
+  display: block;
+  background-color: #082c0a;
+  border: 0;
+  color: #fff;
+  border-radius: 5px;
+  padding: 9px 0;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Textarea styling */
+form textarea {
+  resize: none;
+}
+
+/* Single post styles */
+.single-post {
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Word wrap for post text */
+.post-text {
+  word-wrap: break-word;
+}
+
+/* Post group styling */
+.post-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* Create form styling */
+.create-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  justify-items: center;
+  margin-top: 50px;
+}
+
+.post-image{
+  max-width: 550px;
+  margin: 0 auto;
+}

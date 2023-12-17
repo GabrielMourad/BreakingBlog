@@ -10,6 +10,8 @@ require("dotenv").config()
 const postMiddleware = multer({ dest: 'images/' })
 const fs = require('fs')
 
+//breaking-blog-server-gabriel-mourads-projects.vercel.app
+
 // Serve images statically
 server.use('/images', express.static(__dirname + '/images'))
 

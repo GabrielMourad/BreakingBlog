@@ -19,13 +19,7 @@ server.use('/images', express.static('/tmp'))
 mongoose.connect(process.env.MONGO_LINK)
 
 // Middleware setup
-server.use(cors(
-    {
-        origin: ["https://breaking-blog.vercel.app"],
-        methods: ["POST", "GET"],
-        credentials: true
-    }
-))
+server.use(cors())
 
 server.use(express.json())
 

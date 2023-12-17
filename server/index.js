@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGO_LINK)
 
 // Middleware setup
 server.use(cors({
-    origin: ["https://breaking-blog.vercel.app/"],
+    origin: ["https://breaking-blog.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
 }))

@@ -43,7 +43,7 @@ export default function CreatePost() {
 
       try {
         // Send a POST request to the server with the form data
-        const response = await fetch('breaking-blog-server.vercel.app/post', {
+        const response = await fetch('https://breaking-blog-server-gabriel-mourads-projects.vercel.app/post', {
           method: 'POST',
           body: data,
         });

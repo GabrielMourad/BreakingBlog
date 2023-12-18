@@ -19,12 +19,10 @@ export default function LoginPage({ setLoggedIn }) {
     event.preventDefault();
 
     // Send a POST request to the server for user login
-    const response = await fetch('https://breaking-blog-server.vercel.app/login', {
+    const response = await fetch('http://localhost:3000/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      credentials: 'include',  // Include credentials (cookies) with the request
-       mode: 'cors',  // Enable cross-origin resource sharing
+      headers: { 'Content-Type': 'application/json' },
     });
 
     // Parse the response as JSON

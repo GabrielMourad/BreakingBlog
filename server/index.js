@@ -12,14 +12,9 @@ require("dotenv").config()
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_LINK)
 
-const corsOptions = {
-    origin: 'https://breaking-blog.vercel.app/', // replace with your actual frontend domain
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204,
-  };
+
 // Middleware setup
-server.use(cors(corsOptions))
+server.use(cors())
 server.use(express.json())
 
 server.get('/', async (request,response) => {

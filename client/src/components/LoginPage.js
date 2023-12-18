@@ -22,7 +22,9 @@ export default function LoginPage({ setLoggedIn }) {
     const response = await fetch('https://breaking-blog-server.vercel.app/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      credentials: 'include',  // Include credentials (cookies) with the request
+       mode: 'cors',  // Enable cross-origin resource sharing
     });
 
     // Parse the response as JSON

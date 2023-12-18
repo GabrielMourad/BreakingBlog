@@ -13,7 +13,12 @@ require("dotenv").config()
 mongoose.connect(process.env.MONGO_LINK)
 
 // Middleware setup
-server.use(cors())
+server.use(cors({
+    origin: 'https://breaking-blog.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+}));
 server.use(express.json())
 
 server.get('/', async (request,response) => {
@@ -50,7 +55,7 @@ server.post('/login', async (request,response) => {
             username,
             password
         })
-        
+
         response.header('Access-Control-Allow-Origin', 'https://breaking-blog.vercel.app'); // Specific origin
         response.json(userDoc);
 

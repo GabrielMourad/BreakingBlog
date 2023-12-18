@@ -26,6 +26,10 @@ server.get('/', async (request,response) => {
     response.json({message: "hello"})
 })
 
+//test endpoint
+server.get('/test', (request, response) => {
+    response.json({ message: 'Test endpoint' });
+});
 // Route for user registration
 server.post('/register', async (request,response) => {
     const { username, password } = request.body

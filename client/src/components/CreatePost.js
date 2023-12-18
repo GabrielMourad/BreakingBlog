@@ -35,7 +35,14 @@ export default function CreatePost() {
       content,
       user
     };
-
+    
+    const response = await fetch('https://breaking-blog-server.vercel.app/post', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
     setPosts((prevPosts) => [...prevPosts, data]);
 
     alert("Created a post successfully")

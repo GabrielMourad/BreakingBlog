@@ -50,7 +50,8 @@ server.post('/login', async (request,response) => {
             username,
             password
         })
-        console.log(userDoc)
+        
+        response.header('Access-Control-Allow-Origin', 'https://breaking-blog.vercel.app'); // Specific origin
         response.json(userDoc);
 
     } catch (error) {

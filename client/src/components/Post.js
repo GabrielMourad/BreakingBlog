@@ -9,7 +9,7 @@ export default function Post({ post }) {
     <div className="post">
       {/* Link to the detailed view of the post */}
       <div className="image">
-        <Link to={"/post/" + post.id}>
+        <Link to={"/post/" + post._id}>
           {/* Display the post cover image */}
           <img src="BreakingBlog.jpg" alt={post.title} />
         </Link>
@@ -17,7 +17,7 @@ export default function Post({ post }) {
 
       <div className="content">
         {/* Link to the detailed view of the post */}
-        <Link to={"/post/" + post.id}>
+        <Link to={"/post/" + post._id}>
           {/* Display the post title */}
           <h2>{post.title}</h2>
         </Link>

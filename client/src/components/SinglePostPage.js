@@ -12,7 +12,7 @@ export default function SinglePostPage() {
   // useEffect hook to fetch the details of the post when the component mounts
   useEffect(() => {
     // Fetch the post details from the server using the provided ID
-    fetch('http://localhost:3000/post/' + id)
+    fetch('https://breaking-blog-server.vercel.app/post/' + id)
       .then((response) => {
         // Parse the response as JSON
         response.json().then((post) => {

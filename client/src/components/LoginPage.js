@@ -23,8 +23,7 @@ export default function LoginPage({ setLoggedIn }) {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      credentials: 'include',  // Include credentials (cookies) with the request
-       mode: 'cors',  // Enable cross-origin resource sharing
+      mode: 'cors',  // Enable cross-origin resource sharing
     });
 
     // Parse the response as JSON

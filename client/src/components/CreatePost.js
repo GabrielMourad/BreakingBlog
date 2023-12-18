@@ -8,7 +8,6 @@ export default function CreatePost() {
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');
-  const [file, setFile] = useState('');
 
   // Accessing user information from the BlogContext
   const { userInfo } = useContext(BlogContext);
@@ -16,50 +15,38 @@ export default function CreatePost() {
   // React Router's navigation hook
   let navigate = useNavigate();
 
-  // Function to check if the selected file is an image
-  const isImage = (file) => {
-    return file && file.type.startsWith('image/');
-  };
-
   // Function to handle form submission
   const handlePosts = async (event) => {
     event.preventDefault();
 
     // Check if all required fields are filled
-    if (!title || !summary || !content || !file) {
+    if (!title || !summary || !content) {
       alert('All fields are required.');
       return;
     }
 
-    // Check if the selected file is an image
-    if (isImage(file)) {
-      // Create a FormData object to send the data as a multipart form
-      const data = new FormData();
-      data.set('title', title);
-      data.set('summary', summary);
-      data.set('file', file);
-      data.set('content', content);
-      data.set('user', userInfo.username);
+    const data = {
+      title,
+      summary,
+      content,
+      user: userInfo.username
+    };
 
-      try {
-        // Send a POST request to the server with the form data
-        const response = await fetch('https://breaking-blog-server.vercel.app/post', {
-          method: 'POST',
-          body: data,
-        });
+    try {
+      const response = await fetch('http://localhost:3000/post', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-        // If the response is OK, display a success message and navigate to the home page
-        if (response.ok) {
-          alert('Post Created!');
-          navigate('/');
-        }
-      } catch (error) {
-        // Log an error if there's an issue with sending data to the server
-        console.error('Error sending data:', error);
+      if (response.ok) {
+        alert('Post Created!');
+        navigate('/');
       }
-    } else {
-      // Display an alert if the selected file is not an image
-      alert('Please select a valid image file.');
+    } catch (error) {
+      console.error('Error sending data:', error);
     }
   };
 
@@ -85,15 +72,6 @@ export default function CreatePost() {
         placeholder="Summary"
         value={summary}
         onChange={(event) => setSummary(event.target.value)}
-        required
-      />
-
-      {/* Input field for selecting an image file */}
-      <label htmlFor="file">Image:</label>
-      <input
-        type="file"
-        id="file"
-        onChange={(event) => setFile(event.target.files[0])}
         required
       />
 

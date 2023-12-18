@@ -11,7 +11,7 @@ export default function Post({ post }) {
       <div className="image">
         <Link to={"/post/" + post._id}>
           {/* Display the post cover image */}
-          <img src={"http://localhost:3000/" + post.cover} alt={post.title} />
+          <img src="BreakingBlog.jpg" alt={post.title} />
         </Link>
       </div>
 

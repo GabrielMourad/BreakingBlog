@@ -37,7 +37,7 @@ export default function SinglePostPage() {
     <div className="single-post">
       {/* Display the post cover image */}
       <div className="post-image">
-        <img src={"breaking-blog-server-gabriel-mourads-projects.vercel.app/" + post.cover} alt="" />
+        <img src= "/BreakingBlog.jpg" alt="" />
       </div>
 
       {/* Display the post title */}

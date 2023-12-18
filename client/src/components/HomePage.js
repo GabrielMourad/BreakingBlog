@@ -9,7 +9,7 @@ export default function HomePage() {
   // useEffect hook to fetch posts when the component mounts
   useEffect(() => {
     // Fetch posts from the server
-    fetch('https://breaking-blog-server.vercel.app/post')
+    fetch('http://localhost:3000/post')
       .then((response) => {
         // Parse the response as JSON
         response.json().then((posts) => {

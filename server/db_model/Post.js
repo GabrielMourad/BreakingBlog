@@ -7,7 +7,6 @@ const PostSchema = new mongoose.Schema({
     title: String,
     summary: String,
     content: String,
-    cover: String,
     user: String,
 }, {
     // Add timestamps for createdAt and updatedAt

@@ -5,27 +5,21 @@ const mongoose = require("mongoose");
 const User = require('./db_model/User')
 const Post = require('./db_model/Post')
 const server = express();
-const multer = require('multer')
 require("dotenv").config()
-const postMiddleware = multer({ dest: '/tmp/' })
-const fs = require('fs')
 
 //breaking-blog-server-gabriel-mourads-projects.vercel.app
-
-// Serve images statically
-server.use('/images', express.static('/tmp'))
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_LINK)
 
 // Middleware setup
 server.use(cors())
-
 server.use(express.json())
 
 server.get('/', async (request,response) => {
     response.json({message: "hello"})
 })
+
 // Route for user registration
 server.post('/register', async (request,response) => {
     const { username, password } = request.body
@@ -61,22 +55,14 @@ server.post('/login', async (request,response) => {
 })
 
 // Route for creating a new post
-server.post('/post', postMiddleware.single('file'), async (request,response) => {
-    const { path, originalname } = request.file
+server.post('/post', async (request,response) => {
     const { title, summary, content, user } = request.body
-
-    // Extract file extension and create a new filename
-    const nameArr = originalname.split('.')
-    const fileExt = nameArr[nameArr.length - 1]
-    const pathWithExt = `${path}.${fileExt}`
-    fs.renameSync(path, pathWithExt);
 
     // Create a new post in the database
     const postDoc = await Post.create({
         title,
         summary,
         content,
-        cover: pathWithExt,
         user
     })
 

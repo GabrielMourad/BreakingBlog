@@ -13,7 +13,7 @@ require("dotenv").config()
 mongoose.connect(process.env.MONGO_LINK)
 
 const corsOptions = {
-    origin: 'https://breaking-blog.vercel.app/', // replace with your actual frontend domain
+    origin: 'https://breaking-blog.vercel.app', // replace with your actual frontend domain
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204,

@@ -5,12 +5,11 @@ import { BlogContext } from '../context-api/BlogContext';
 // CreatePost component for creating a new blog post
 export default function CreatePost() {
   // State variables to manage form input values
+  const [user, setUser] = useState("")
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');
 
-  // Accessing user information from the BlogContext
-  const { userInfo } = useContext(BlogContext);
 
   // React Router's navigation hook
   let navigate = useNavigate();
@@ -20,7 +19,7 @@ export default function CreatePost() {
     event.preventDefault();
 
     // Check if all required fields are filled
-    if (!title || !summary || !content) {
+    if (!title || !summary || !content || !user) {
       alert('All fields are required.');
       return;
     }
@@ -53,6 +52,18 @@ export default function CreatePost() {
   // JSX for the create post form
   return (
     <form className="create-form" onSubmit={handlePosts}>
+
+      {/* Input field for the user */}
+      <label htmlFor="title">Username:</label>
+      <input
+        type="text"
+        id="title"
+        placeholder="Title"
+        value={user}
+        onChange={(event) => setUser(event.target.value)}
+        required
+      />
+
       {/* Input field for the title */}
       <label htmlFor="title">Title:</label>
       <input

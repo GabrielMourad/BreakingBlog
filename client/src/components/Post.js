@@ -9,7 +9,7 @@ export default function Post({ post }) {
     <div className="post">
       {/* Link to the detailed view of the post */}
       <div className="image">
-        <Link to={"/post/" + post._id}>
+        <Link to={"/post/" + post.id}>
           {/* Display the post cover image */}
           <img src="BreakingBlog.jpg" alt={post.title} />
         </Link>
@@ -17,7 +17,7 @@ export default function Post({ post }) {
 
       <div className="content">
         {/* Link to the detailed view of the post */}
-        <Link to={"/post/" + post._id}>
+        <Link to={"/post/" + post.id}>
           {/* Display the post title */}
           <h2>{post.title}</h2>
         </Link>
@@ -25,7 +25,6 @@ export default function Post({ post }) {
         {/* Information about the post, including author and creation date */}
         <p className="info">
           <span href="" className="author">{post.user}</span>
-          <time>{post.createdAt.split("T")[0]}</time>
         </p>
 
         {/* Display a summary of the post */}

@@ -29,21 +29,12 @@ export default function Header({ loggedIn, setLoggedIn }) {
 
         {/* Navigation section with conditional rendering based on login status */}
         <nav>
-          {!loggedIn ? (
-            // If not logged in, display login and register links
-            <>
-              <a href="/login">Login</a>
-              <a href="/register">Register</a>
-            </>
-          ) : (
-            // If logged in, display create post and logout links
+         
             <>
               <Link to="/create">Create</Link>
-              <a href="/logout" onClick={handleLogOut}>
-                Logout
-              </a>
+             
             </>
-          )}
+        
         </nav>
       </header>
     </div>

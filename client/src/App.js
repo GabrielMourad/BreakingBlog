@@ -3,7 +3,6 @@ import './App.css';
 import HomePage from './components/HomePage';
 import Header from './components/Header';
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import { useState } from 'react';
 import { BlogContextProvider } from './context-api/BlogContext';
@@ -25,68 +24,48 @@ function App() {
                     {/* Default route for the home page */}
                     <Route
                         index
-                        element={loggedIn ?
+                        element={
                             <main>
                                 <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
                                 <HomePage />
                             </main>
-                            : (<Navigate to="/login" />)
+                          
                         }
                     />
 
-                    {/* Route for the login page */}
-                    <Route
-                        path="/login"
-                        element={!loggedIn ?
-                            <main>
-                                <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-                                <LoginPage setLoggedIn={setLoggedIn} />
-                            </main>
-                            : (<Navigate to="/" />)
-                        }
-                    />
+                   
 
-                    {/* Route for handling logout (redirects to login) */}
-                    <Route
-                        path="/logout"
-                        element={!loggedIn ?
-                            <main>
-                                <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-                                <LoginPage setLoggedIn={setLoggedIn} />
-                            </main>
-                            : (<Navigate to="/" />)
-                        }
-                    />
+                    
 
                     {/* Route for the registration page */}
                     <Route
                         path="/register"
-                        element={!loggedIn ?
+                        element={
                             <main>
                                 <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
                                 <RegisterPage />
                             </main>
-                            : (<Navigate to="/" />)
+                           
                         }
                     />
 
                     {/* Route for creating a new post */}
-                    <Route path="/create" element={loggedIn ?
+                    <Route path="/create" element={
                             <main>
                                 <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
                                 <CreatePost />
                             </main>
-                            : (<Navigate to="/" />)
+                         
                         }
                     />
 
                     {/* Route for displaying a single post */}
-                    <Route path="/post/:id" element={loggedIn ?
+                    <Route path="/post/:id" element={
                             <main>
                                 <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
                                 <SinglePostPage />
                             </main>
-                            : (<Navigate to="/" />)
+                           
                         }
                     />
                 </Routes>

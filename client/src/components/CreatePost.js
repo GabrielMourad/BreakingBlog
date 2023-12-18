@@ -1,16 +1,19 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BlogContext } from '../context-api/BlogContext';
+import { v4 as uuidv4 } from 'uuid';
+
 
 // CreatePost component for creating a new blog post
 export default function CreatePost() {
   // State variables to manage form input values
+  const [user, setUser] = useState('');
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');
 
   // Accessing user information from the BlogContext
-  const { userInfo } = useContext(BlogContext);
+  const { setPosts } = useContext(BlogContext);
 
   // React Router's navigation hook
   let navigate = useNavigate();
@@ -26,33 +29,34 @@ export default function CreatePost() {
     }
 
     const data = {
+      id: uuidv4(),
       title,
       summary,
       content,
-      user: userInfo.username
+      user
     };
 
-    try {
-      const response = await fetch('https://breaking-blog-server.vercel.app/post', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+    setPosts((prevPosts) => [...prevPosts, data]);
 
-      if (response.ok) {
-        alert('Post Created!');
-        navigate('/');
-      }
-    } catch (error) {
-      console.error('Error sending data:', error);
-    }
+    alert("Created a post successfully")
+    navigate("/")
+
   };
 
   // JSX for the create post form
   return (
     <form className="create-form" onSubmit={handlePosts}>
+      {/* Input field for the title */}
+      <label htmlFor="title">Username:</label>
+      <input
+        type="text"
+        id="user"
+        placeholder="User"
+        value={user}
+        onChange={(event) => setUser(event.target.value)}
+        required
+      />
+
       {/* Input field for the title */}
       <label htmlFor="title">Title:</label>
       <input

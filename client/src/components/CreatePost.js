@@ -33,7 +33,7 @@ export default function CreatePost() {
     };
 
     try {
-      const response = await fetch('http://localhost:3000/post', {
+      const response = await fetch('https://breaking-blog-server.vercel.app/post', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -6,8 +6,12 @@
     "routes": [
         { 
             "src": "/(.*)", 
-            "dest": "/"
-        
+            "dest": "/", 
+            "headers": {
+                "Access-Control-Allow-Origin": "https://breaking-blog-server.vercel.app/login",
+                "Access-Control-Allow-Methods": "GET, POST",
+                "Access-Control-Allow-Headers": "Content-Type"
+            }
         }
     ]
 }
